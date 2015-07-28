@@ -1,0 +1,11 @@
+{
+  "name": "wallball",
+  "version": "1.0.0",
+  "description": "wall ball epic app",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Steef Janssen",
+  "license": "ISC"
+}

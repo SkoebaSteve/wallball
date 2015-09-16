@@ -1,0 +1,9 @@
+<ul>
+  <li ng-repeat="p in match.players">
+    <p>{{ p.name }}</p> 
+    <p>{{ scores[$index] }}</p> 
+    <button ng-click="updateScore(p, $index, $event)"></button>
+  </li>
+</ul>
+
+<button disabled="true" ng-click="finishMatch">finish Match</button>

@@ -108,9 +108,8 @@ app.controller('MatchController', function($scope, Matches){
 app.controller('SingleMatchController', function($scope, Players, Matches, Points, $routeParams, $location){
   var id = $routeParams.id;
   $scope.match = Matches.get({id: id});
-  $scope.points = Points.query();
 
-  console.log($scope.points);
+  console.log($scope.match);
 
   $scope.updateMatch = function(){
     $scope.match.$update();

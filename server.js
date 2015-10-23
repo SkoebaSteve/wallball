@@ -23,12 +23,14 @@ var matchSchema = Schema({
   players : [{
     id:{ type : String },
     name:{ type : String },
-    rank:{ type: Number, default: 0 }
+    rank:{ type: Number, default: 0 },
+    points:[{
+      time : { type : Date, default: Date.now },
+      scoreType: {type: String},
+    }]
   }],
   maxScore: { type: Number, default: 20}
 });
-
-// Create a seperate points schema with a reference to the match or add a reference to the points schema in the match, whatever is the best..
 
 var pointSchema = Schema({
   time : { type : Date, default: Date.now },
@@ -40,25 +42,6 @@ var pointSchema = Schema({
 var Players = mongoose.model('Player', playerSchema);
 var Matches = mongoose.model('Match', matchSchema);
 var Points = mongoose.model('Point', pointSchema);
-
-// Players.findOne({'_id': '55caeb93c4eeb5d11c29bc57'}).remove().exec();
-
-// var query = Matches.players.find({'players.id': '55b711a11a5c8d9ee23a7d73'});
-// query.where('_id', '55e7923a15dbcb4a5a03cdc7');
-
-// var query = Matches.find({"_id" : "55e7923a15dbcb4a5a03cdc7", "players.id" : "55b711a11a5c8d9ee23a7d73" });
-
-// query.exec(function (err, docs) {
-//   console.log(docs);
-// });
-
-// Matches.findOne({'_id': '55e7923a15dbcb4a5a03cdc7'}, function(err, match){
-//   console.log(match.players);
-
-//   // match.filter(function(player) {
-//   //  return player.name == "steef"
-//   // });
-// });
 
 // message service =================================================
 
@@ -135,12 +118,28 @@ app.route('/api/matches')
 
 app.route('/api/matches/:id')
   .get(function(req,res){
+
+    // in a single match it should get the match with id but also the points per player
+
     Matches.findOne({'_id': req.params.id}, function(err, match){
-      res.json(match);
+
+      match.players.forEach(function(item, i) {
+        Points.find({'matchId' : match._id, 'playerId' : item.id}, function(err, points){
+          points.forEach(function(p, i){
+            item.points.push({
+              "time": p.time,
+              "scoreType": p.scoreType
+            });
+          });
+        }).then(function(data) {
+          res.json(match);
+        });
+      });
+
     });
+
   })
   .put(function(req, res){
-
     Matches.update({'_id': req.params.id}, req.body, {upsert: false}, function(result){
       res.json(result);
     });
@@ -157,13 +156,13 @@ app.route('/api/points')
   .post(function(req, res){
     var record = req.body;
 
-    var Point = new Points({
+    var point = new Points({
       scoreType: record.scoreType,
       playerId : record.playerId,
       matchId : record.matchId
     });
 
-    Point.save(function(err, point){
+    point.save(function(err, point){
       if (err) return console.error(err);
       res.json(point);
     });

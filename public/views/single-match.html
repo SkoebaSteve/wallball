@@ -1,14 +1,14 @@
 <h2>{{ match.time | date:'yyyy-MM-dd HH:mm' }} </h2>
+
 <ul>
   <li ng-repeat="player in match.players">
     <p><a href="players/{{player.id}}">{{player.name}}</a></p>
+    
+    <ul>
+      <li ng-repeat="point in player.points">
+        {{ point.scoreType }}
+        {{ point.time | date:'yyyy-MM-dd HH:mm:ss' }}
+      </li>
+    </ul>
   </li>
 </ul>
-
-<ul>
-  <li  ng-repeat="point in points">
-    {{ point.scoreType }}
-    {{ point.time | date:'yyyy-MM-dd HH:mm:ss' }}
-  </li>
-</ul>
-

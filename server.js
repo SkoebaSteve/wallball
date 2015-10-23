@@ -10,7 +10,10 @@ var mongoose        = require('mongoose');
 
 // database connection =================================================
 var db = mongoose.connection;
-mongoose.connect('mongodb://localhost/wallball');
+var password = process.env.PWD;
+var username = process.env.USER;
+
+mongoose.connect('mongodb://'+ username +':' + password + '@ds043714.mongolab.com:43714/heroku_frwx3kzq');
 var Schema = mongoose.Schema;
 
 var playerSchema = Schema({

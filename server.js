@@ -7,11 +7,21 @@ var bodyParser      = require('body-parser');
 var gcm             = require('node-gcm');
 var mongoose        = require('mongoose');
 
+// if development
+try{
+  var process       = require('./process');
+  var password      = process.password;
+  var username      = process.user;
+}
+
+// otherwise use the heroku environment variables
+catch (e){
+  var password      = process.env.PWD;
+  var username      = process.env.USER;
+}
 
 // database connection =================================================
 var db = mongoose.connection;
-var password = process.env.PWD;
-var username = process.env.USER;
 
 mongoose.connect('mongodb://'+ username +':' + password + '@ds043714.mongolab.com:43714/heroku_frwx3kzq');
 var Schema = mongoose.Schema;

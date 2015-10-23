@@ -109,8 +109,6 @@ app.controller('SingleMatchController', function($scope, Players, Matches, Point
   var id = $routeParams.id;
   $scope.match = Matches.get({id: id});
 
-  console.log($scope.match);
-
   $scope.updateMatch = function(){
     $scope.match.$update();
   }
@@ -132,7 +130,6 @@ app.controller('NewMatchController', function($scope, Matches, Players, $locatio
       name : player.firstName
     }
     $scope.match.players.push(newPlayer); 
-    console.log($scope.match);
   }
 
    $scope.newMatch = function(){
@@ -152,7 +149,7 @@ app.controller('PlayController', function($scope, Points, Matches, $routeParams,
   // });
 
   // please fix this
-  $scope.scores = [0,0,0,0,0];
+  $scope.scores = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
   $scope.updateScore = function(player, $index, $event){
     if($scope.scores[$index] < $scope.match.maxScore){

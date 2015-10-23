@@ -25,7 +25,7 @@ var db = mongoose.connection;
 
 // for local database create mongo db wallball and use mongodb://localhost/wallball
 
-mongoose.connect('mongodb://'+ username +':' + password + '@ds043714.mongolab.com:43714/heroku_frwx3kzq', function(err, res){
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://'+ username +':' + password + '@ds043714.mongolab.com:43714/heroku_frwx3kzq', function(err, res){
   if (err) {
     console.log (err);
     } else {

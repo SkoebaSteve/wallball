@@ -9,15 +9,12 @@ var mongoose        = require('mongoose');
 
 // if development
 try{
-  var environment       = require('./environment');
-  var password      = environment.password;
-  var username      = environment.user;
+  var environment = require('./environment');
+  var connectionString = environment.connectionString;
 }
 
-// otherwise use the heroku environment variables
-catch (e){
-  var password      = process.env.PWD;
-  var username      = process.env.USER;
+catch(e){
+  console.log(e);
 }
 
 // database connection =================================================
@@ -25,7 +22,7 @@ var db = mongoose.connection;
 
 // for local database create mongo db wallball and use mongodb://localhost/wallball
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://'+ username +':' + password + '@ds043714.mongolab.com:43714/heroku_frwx3kzq', function(err, res){
+mongoose.connect(process.env.MONGOLAB_URI || connectionString, function(err, res){
   if (err) {
     console.log (err);
     } else {

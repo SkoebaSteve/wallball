@@ -142,14 +142,18 @@ app.controller('NewMatchController', function($scope, Matches, Players, $locatio
 
 app.controller('PlayController', function($scope, Points, Matches, $routeParams, $location){
   var id = $routeParams.id;
-  $scope.match = Matches.get({id: id});
 
-  // angular.forEach($scope.match.players, function(value, key) {
-  //   console.log("test");
-  // });
+  $scope.scores = [];
+  $scope.match = Matches.get({id: id}, function(data){
+    angular.forEach($scope.match.players, function(value, key) {
+      var score = 0;
+      for(p in value.points){
+        score++;
+      }
+      $scope.scores.push(score);
+    });
+  });
 
-  // please fix this
-  $scope.scores = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
   $scope.updateScore = function(player, $index, $event){
     if($scope.scores[$index] < $scope.match.maxScore){

@@ -154,13 +154,22 @@ app.controller('PlayController', function($scope, Points, Matches, $routeParams,
     });
   });
 
+  $scope.scoreTypes = [
+    {name : "Sudoku"},
+    {name : "Pietro Smash"}, 
+    {name : "Unforced Andrew"}, 
+    {name : "Adam Arrogance"}, 
+    {name : "Dimbos Graveyard"},
+    {name : "All the way to jTown"}
+  ];
+
 
   $scope.updateScore = function(player, $index, $event){
     if($scope.scores[$index] < $scope.match.maxScore){
       $scope.score++;
 
       var point = {
-        scoreType: "sudoku!",
+        scoreType: $scope.selectedScoreType.name,
         playerId: player.id,
         matchId: $scope.match._id
       };

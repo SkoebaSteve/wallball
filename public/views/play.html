@@ -6,4 +6,6 @@
   </li>
 </ul>
 
+<select ng-options="item as item.name for item in scoreTypes" ng-model="selectedScoreType"></select>
+
 <button disabled="true" ng-click="finishMatch">finish Match</button>

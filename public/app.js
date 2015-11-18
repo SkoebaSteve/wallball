@@ -4,15 +4,15 @@ app.config(function($routeProvider, $locationProvider){
   $routeProvider
     .when('/players', {
       controller: 'ListController',
-      templateUrl: 'views/list.html'
+      templateUrl: 'views/players.html'
     })
     .when('/players-new', {
       controller: 'NewController',
-      templateUrl: 'views/new.html'
+      templateUrl: 'views/new-player.html'
     })
     .when('/players/:id', {
       controller: 'SingleController',
-      templateUrl: 'views/single.html'
+      templateUrl: 'views/single-player.html'
     })
     .when('/matches', {
       controller: 'MatchController',
@@ -31,7 +31,7 @@ app.config(function($routeProvider, $locationProvider){
       templateUrl: 'views/play.html'
     })
     .otherwise({
-      redirectTo: '/players'
+      redirectTo: '/matches'
     });
 
     // change urls from hashbangs
@@ -107,8 +107,9 @@ app.controller('MatchController', function($scope, Matches){
 
 app.controller('SingleMatchController', function($scope, Players, Matches, Points, $routeParams, $location){
   var id = $routeParams.id;
-  $scope.match = Matches.get({id: id});
-
+  $scope.match = Matches.get({id: id}, function(data){
+    console.log($scope.match.players)
+  });
   $scope.updateMatch = function(){
     $scope.match.$update();
   }

@@ -1,10 +1,13 @@
-<h2>new match</h2>
-<ul>
-  <li ng-repeat="p in players">
-    {{ p.firstName }} {{ p.lastName }} <button ng-click="addPlayer(p, $event)">add player</button>
+<header class="header">
+  <h1>New Match</h1>
+</header>
+<ul class="collection">
+  <li class="collection-item" ng-repeat="p in players">
+    {{ p.firstName }} {{ p.lastName }} 
+    <button class="collection-item__button" ng-click="addPlayer(p, $event)">add</button>
   </li>
 </ul>
 
 <p> <label for="">Max Score:</label> <input ng-model="maxScore" type="text"></p>
 
-<button ng-click="newMatch()">play match</button>
+<button class="button button--full" ng-click="newMatch()">play match</button>

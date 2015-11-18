@@ -1,5 +1,15 @@
-<ul>
-  <li ng-repeat="m in matches">
-    <a href="/matches/{{m._id}}">{{ m.time | date:'yyyy-MM-dd HH:mm' }}</a>
+<header class="header">
+  <h1>Matches</h1>
+</header>
+<a class="button" href="/matches-new">
+  new match
+  <i class="fa fa-plus"></i>
+</a>
+<ul class="collection">
+  <li class="collection-item" ng-repeat="m in matches">
+    <a class="collection-item__link" href="/matches/{{m._id}}">
+      {{ m.time | date:'yyyy-MM-dd HH:mm' }}
+      <i class="fa fa-chevron-right"></i>
+    </a>
   </li>
 </ul>

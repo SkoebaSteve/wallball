@@ -3,7 +3,6 @@
 <ul>
   <li ng-repeat="player in match.players">
     <p><a href="players/{{player.id}}">{{player.name}}</a></p>
-    
     <ul>
       <li ng-repeat="point in player.points">
         {{ point.scoreType }}

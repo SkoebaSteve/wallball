@@ -1,0 +1,19 @@
+<header class="header">
+  <h1>{{ player.firstName }} {{ player.lastName }}</h1>
+</header>
+
+<fieldset> 
+  <label for="">First Name:</label> 
+  <input ng-model="player.firstName" type="text">
+</fieldset>
+
+<fieldset>
+  <label for="">Last Name:</label>
+  <input ng-model="player.lastName" type="text">
+</fieldset>
+
+<fieldset>
+  <button ng-click="update()">update</button>
+  <button ng-click="delete()">delete</button>
+</fieldset>
+

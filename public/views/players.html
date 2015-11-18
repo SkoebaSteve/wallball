@@ -1,0 +1,15 @@
+<header class="header">
+  <h1>Players</h1>
+</header>
+<a class="button" href="/players-new">
+  new player
+  <i class="fa fa-plus"></i>
+</a>
+<ul class="collection">
+  <li class="collection-item" ng-repeat="p in players">
+    <a class="collection-item__link" href="/players/{{p._id}}">
+      {{ p.firstName }} {{ p.lastName }}
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </li>
+</ul>

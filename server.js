@@ -151,6 +151,7 @@ app.route('/api/matches/:id')
           });
         }).then(function(data) {
           res.json(match);
+          console.log(match);
         });
       });
 

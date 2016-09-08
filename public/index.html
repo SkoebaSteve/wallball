@@ -10,20 +10,24 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
   <link rel="stylesheet" href="/assets/style.css">
   <base href="/">
 </head>
 <body>
     <nav class="nav">
-      <a class="nav__link active" href="/matches">
-        <i class="material-icons medium">assignment</i>
-        <span>matches overview</span>
-      </a>
-      <a class="nav__link" href="/players">
-        <i class="material-icons medium">assignment_ind</i>
-        <span>players overview</span>
-      </a>
+      <p>Wall Ball <span>prison rules</span></p>
+      <div class="nav__wrapper">
+        <a class="nav__link active" href="/matches">
+          <i class="material-icons medium">assignment</i>
+          <span>matches overview</span>
+        </a>
+        <a class="nav__link" href="/players">
+          <i class="material-icons medium">assignment_ind</i>
+          <span>players overview</span>
+        </a>
+      </div>
     </nav>
   <div class="app" ng-app="WallBall" ng-view>
     

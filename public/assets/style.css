@@ -23,6 +23,11 @@ nav{
   height:auto;
 }
 
+.logo{
+  margin-top:20px;
+  max-width:200px;
+}
+
 .nav__wrapper{
   display:flex;
   justify-content:center;
@@ -30,8 +35,7 @@ nav{
 }
 
 .nav__link{
-  color:#848484;
-  opacity:0.6;
+  color:#E1DEE9;
   text-align:center;
   text-transform:uppercase;
   width:50%;

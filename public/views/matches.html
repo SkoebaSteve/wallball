@@ -8,7 +8,10 @@
 <div class="wrapper">
   <div class="collection-item card" ng-repeat="m in matches">
     <div class="card-content">
-      {{ m.time | date:'yyyy-MM-dd HH:mm' }}
+      <p>{{ m.time | date:'yyyy-MM-dd HH:mm' }}</p>
+      <ul>
+        <li ng-repeat="p in m.players">{{p.name}}</li>
+      </ul>
     </div>
     <div class="card-action">
       <a class="collection-item__link" href="/matches/{{m._id}}">See Match</a>

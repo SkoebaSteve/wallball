@@ -1,14 +1,18 @@
 <header class="header">
   <h1>Match</h1>
 </header>
-<ul class="collection">
-  <li class="collection-item" ng-repeat="p in match.players">
-    {{ p.name }}
-    <span>{{ scores[$index] }}</span>
-    <button class="collection-item__button" ng-click="updateScore(p, $index, $event)">point</button>
-  </li>
-</ul>
+<div class="wrapper">
+  <div class="card" ng-repeat="p in match.players">
+    <div class="card-content">
+      <p>{{ p.name }}</p>
+      <p>{{ scores[$index] }}</p>
+    </div>
+    <div class="card-action">
+      <button class="btn waves-effect waves-light" ng-click="updateScore(p, $index, $event)">point</button>
+    </div>
+  </div>
+  <select ng-options="item as item.name for item in scoreTypes" ng-model="selectedScoreType"></select>
+</div>
 
-<select ng-options="item as item.name for item in scoreTypes" ng-model="selectedScoreType"></select>
 
 <!-- <button disabled="true" ng-click="finishMatch">finish Match</button> -->

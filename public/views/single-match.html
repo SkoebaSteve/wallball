@@ -1,14 +1,20 @@
 <header class="header">
   <h1>{{ match.time | date:'yyyy-MM-dd HH:mm' }}</h1>
 </header>
-<ul class="collection">
-  <li class="collection-item" ng-repeat="player in match.players">
-    <p><a class="collection-item__link" href="players/{{player.id}}">{{player.name}}</a></p>
-    <ul>
-      <li ng-repeat="point in player.points">
-        {{ point.scoreType }}
-        {{ point.time | date:'yyyy-MM-dd HH:mm:ss' }}
-      </li>
-    </ul>
-  </li>
-</ul>
+
+<div class="wrapper">
+  <div class="collection-item card" ng-repeat="player in match.players">
+    <div class="card-content">
+      <p>{{player.name}}</p>
+      <ul>
+        <li ng-repeat="point in player.points">
+          {{ point.scoreType }}
+          {{ point.time | date:'yyyy-MM-dd HH:mm:ss' }}
+        </li>
+      </ul>
+    </div>
+    <div class="card-action">
+      <a class="collection-item__link" href="players/{{player.id}}">See Player</a>
+    </div>
+  </div>
+</div>
